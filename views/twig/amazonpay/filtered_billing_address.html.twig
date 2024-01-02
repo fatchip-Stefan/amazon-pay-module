@@ -1,5 +1,5 @@
 {% if billadr %}
-    <div class="col-lg-9 offset-lg-3" id="addressText">
+    <div id="billingAddressText">
         {% if billadr.oxuser__oxcompany.value != '' %} {{ billadr.oxuser__oxcompany.value }}<br />{% endif %}
         {% if billadr.oxuser__oxaddinfo.value != '' %} {{ billadr.oxuser__oxaddinfo.value }}<br />{% endif %}
         {% if billadr.oxuser__oxustid.value != '' %} {{ translate({ ident: "VAT_ID_NUMBER" }) }} {{ billadr.oxuser__oxustid.value }}<br /> {% endif %}
