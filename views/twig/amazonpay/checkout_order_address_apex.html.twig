@@ -2,12 +2,16 @@
     /* console.log('amazonpay_script_checkout_order checkout_order_address');
     console.log('SessionId: ' + '{{ oViewConf.getAmazonSessionId() }}');
     */
-    $('#amznChangeAddress').click(function (e) {
+
+    var amzChangeDelAddress = document.getElementById('amznChangeDelAddress');
+
+    amzChangeDelAddress.addEventListener('click', function(e) {
         e.preventDefault();
-    });
-    amazon.Pay.bindChangeAction('#amznChangeAddress', {
-        amazonCheckoutSessionId: '{{ oViewConf.getAmazonSessionId() }}',
-        changeAction: 'changeAddress'
+    }, false);
+
+    amazon.Pay.bindChangeAction('#amznChangeDelAddress', {
+    amazonCheckoutSessionId: '{{ oViewConf.getAmazonSessionId() }}',
+    changeAction: 'changeAddress'
     });
 {% endcapture %}
 {% set oDeliveryAddress = oView.getDeliveryAddressAsObj() %}
@@ -20,7 +24,7 @@
         <input type="hidden" name="fnc" value="">
         <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
             {{ translate({ ident: "BILLING_ADDRESS" }) }}
-            <button type="submit" class="btn"
+            <button type="submit" class="btn" id="amznChangeBillAddress"
                     title="{{ translate({ ident: "EDIT" }) }}">
                 <svg aria-hidden="true">
                     <use xlink:href="#pencil"></use>
@@ -28,7 +32,7 @@
             </button>
         </h4>
         <div class="card-body">
-            {% include "@osc_amazonpay/amazonpay/filtered_billing_address" with {billadr: oBillingAddress} %}
+            {% include "@osc_amazonpay/amazonpay/filtered_billing_address_apex" with {billadr: oBillingAddress} %}
         </div>
     </form>
     <form action="{{ oViewConf.getSslSelfLink()|raw }}" method="post">
@@ -37,7 +41,7 @@
         <input type="hidden" name="fnc" value="">
         <h4 class="card-header card-title card-header-edit d-flex justify-content-between align-items-center">
             {{ translate({ ident: "SHIPPING_ADDRESS" }) }}
-            <button type="submit" class="btn" id="amznChangeAddress"
+            <button type="submit" class="btn" id="amznChangeDelAddress"
                     title="{{ translate({ ident: "EDIT" }) }}">
                 <svg aria-hidden="true">
                     <use xlink:href="#pencil"></use>
@@ -47,9 +51,9 @@
         <div class="card-body">
             {% set oDelAdress = oView.getDelAddress() %}
             {% if oDeliveryAddress %}
-                {% include "@osc_amazonpay/amazonpay/filtered_delivery_address" with {delivadr: oDeliveryAddress} %}
+                {% include "@osc_amazonpay/amazonpay/filtered_delivery_address_apex" with {delivadr: oDeliveryAddress} %}
             {% else %}
-                {% include "@osc_amazonpay/amazonpay/filtered_billing_address" with {billadr: oBillingAddress} %}
+                {% include "@osc_amazonpay/amazonpay/filtered_billing_address_apex" with {billadr: oBillingAddress} %}
             {% endif %}
         </div>
     </form>

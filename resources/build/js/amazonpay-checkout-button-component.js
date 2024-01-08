@@ -8,10 +8,17 @@
             // replace the "Zur Kasse" button by using javascript
             // until we get a block to replace it by template
             // for now identify the button by using css classes
-            buttonClasses = 'btn btn-highlight btn-lg w-100'
-            document.getElementsByClassName(buttonClasses)[0].parentNode.append(document.getElementById('AmazonPayWrapper'))
-            document.getElementsByClassName(buttonClasses)[0].style.display = "none"
-
+            buttonClassesApex = 'btn btn-highlight btn-lg w-100'
+            buttonClassesTwig = 'btn btn-lg btn-primary pull-right submitButton nextStep largeButton'
+            if (typeof (document.getElementsByClassName(buttonClassesApex)[0]) !== 'undefined')
+            {
+                document.getElementsByClassName(buttonClassesApex)[0].parentNode.append(document.getElementById('AmazonPayWrapper'))
+                document.getElementsByClassName(buttonClassesApex)[0].style.display = "none"
+            }
+            if (typeof (document.getElementsByClassName(buttonClassesTwig)[0]) !== 'undefined') {
+                document.getElementsByClassName(buttonClassesTwig)[0].parentNode.append(document.getElementById('AmazonPayWrapper'))
+                document.getElementsByClassName(buttonClassesTwig)[0].style.disply = "none"
+            }
             this.amazonPayButton = amazonPayButton;
             this.payloadJSON = payloadJSON;
             this.signature = signature;

@@ -10,7 +10,7 @@ oscAmazonPayRegisterAmazonPayClickHandler = () => {
     oscAmazonPayExpressButton.onClick(function () {
         var BasketElem = document.getElementById(oscAmazonPayBasketSelector);
         // the disabled amazonpay butoon can still be clicked; prevent this when the basket is disabled
-        if (!BasketElem.disabled) {
+        if (typeof (BasketElem) !== 'undefined' && !BasketElem.disabled) {
             // replace() fixes the json output string, twigs "|json_encode" on the array differs from php json_encode and produces checksum errors
             var payloadJson = document.getElementById('osc_amazonpay_payloadJSON').value.replace(/\\/g, "");
             var signature = document.getElementById('osc_amazonpay_signature').value;
@@ -27,20 +27,26 @@ oscAmazonPayRegisterAmazonPayClickHandler = () => {
 };
 
 oscAmazonPaySetAmazonButtonState = () => {
+    console.log('Bevor BAsketItem');
     var BasketElem = document.getElementById(oscAmazonPayBasketSelector);
+    console.log('NAch BAsketItem');
     var oscAmazonPayExpressButton = document.getElementById(oscAmazonPayExpressButtonSelector);
     var showButtonAndText = true;
     var BasketDisabled = true;
 
-    if (BasketElem !== 'undefined') {
+    if (typeof (BasketElem) !== 'undefined' && BasketElem) {
+        console.log('BasketELem is defined');
         // set amazonpay button to the same state the basket button is in
         BasketDisabled = BasketElem.disabled;
-    } else if (BasketElem === 'undefined') {
+    } else if (typeof (BasketElem) === 'undefined' || !BasketElem) {
+        console.log('BasketELem is undefined');
         // do not show text and button when basket is not shown on detail page (out-of-stock)
         showButtonAndText = false;
+    } else{
+        console.log('BasketELem ELSE ???');
     }
 
-    if (typeof oscAmazonPayExpressButton !== 'undefined' && BasketDisabled === true) {
+    if (typeof (oscAmazonPayExpressButton) !== 'undefined' && BasketDisabled === true) {
         document.querySelector(oscAmazonPayExpressButtonSelectorId).shadowRoot.querySelector(oscAmazonPayButtonContainer).classList.replace(oscAmazonPayEnabledClass, oscAmazonPayDisabledClass);
     } else {
         document.querySelector(oscAmazonPayExpressButtonSelectorId).shadowRoot.querySelector(oscAmazonPayButtonContainer).classList.replace(oscAmazonPayDisabledClass, oscAmazonPayEnabledClass);
@@ -55,7 +61,7 @@ oscAmazonPaySetAmazonButtonState = () => {
 }
 
 oscAmazonPayRenderAmazonButton = () => {
-    if (typeof oscAmazonPayButtonIsRendered === "undefined" || oscAmazonPayButtonIsRendered === false) {
+    if (typeof (oscAmazonPayButtonIsRendered) === "undefined" || oscAmazonPayButtonIsRendered === false) {
         try {
             oscAmazonPayExpressButton = amazon.Pay.renderButton(oscAmazonPayExpressButtonSelectorId, {
                 merchantId: document.getElementById('osc_amazonpay_merchantId').value,
@@ -76,7 +82,7 @@ oscAmazonPayRenderAmazonButton = () => {
 
 // set render the button and set states initially
 oscAmazonPayToBasket = document.getElementById(oscAmazonPayBasketSelector);
-if (typeof oscAmazonPayToBasket !== "undefined") {
+if (typeof (oscAmazonPayToBasket) !== "undefined") {
     oscAmazonPayRenderAmazonButton();
     oscAmazonPaySetAmazonButtonState();
     oscAmazonPayRegisterAmazonPayClickHandler();
