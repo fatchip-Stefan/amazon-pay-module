@@ -90,7 +90,7 @@ jobs:
 
       - name: Install Apex Theme
         run: |    
-          docker compose exec -T php composer require oxid-esales/apex-theme:dev-b-7.0.x --with-all-dependencies  --no-update --no-audit
+          docker compose exec -T php composer require oxid-esales/apex-theme:dev-b-7.0.x --with-all-dependencies  --no-update --no-security-blocking
           docker compose exec -T php composer require oxid-esales/oxideshop-demodata-ce:dev-b-7.0.x --no-update
           docker compose exec -T php composer update --no-interaction
 
