@@ -192,7 +192,7 @@ jobs:
   codeception_tests:
     strategy:
       matrix:
-        php: [ '8.0' ]
+        php: [ '8.1' ]
     needs: [ install_shop_with_module ]
     runs-on: ubuntu-latest
     steps:
