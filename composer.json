@@ -24,7 +24,8 @@
         "symfony/dotenv": "^5.4",
         "codeception/module-rest": "1.4.2",
         "codeception/module-phpbrowser": "^1.0.2",
-        "oxid-esales/oxideshop-ce": "^6.3"
+        "oxid-esales/oxideshop-ce": "^6.3",
+        "oxid-esales/testing-library": "dev-b-7.0.x"
     },
     "conflicts": {
         "oxid-esales/oxideshop-ce": "<6.3 | ^7.0"
@@ -73,6 +74,9 @@
         "allow-plugins": {
             "oxid-esales/oxideshop-unified-namespace-generator": true,
             "oxid-esales/oxideshop-composer-plugin": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     }
 }
