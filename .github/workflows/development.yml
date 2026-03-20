@@ -278,7 +278,7 @@ jobs:
   styles:
     strategy:
       matrix:
-        php: [ '8.1' ]
+        php: [ '7.4' ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current module
