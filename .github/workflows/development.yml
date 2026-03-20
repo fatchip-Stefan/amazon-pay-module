@@ -102,12 +102,11 @@ jobs:
         run: |
           docker compose exec -T php composer require oxid-esales/testing-library:dev-b-6.3.x --with-all-dependencies --no-update
 
-      - name: Install Apex Theme
+      - name: Install Demo Data
         run: |
           docker compose exec -T \
             php composer config audit.block-insecure false
-          docker compose exec -T php composer require oxid-esales/apex-theme:dev-b-6.3.x --with-all-dependencies  --no-update --no-security-blocking
-          docker compose exec -T php composer require oxid-esales/oxideshop-demodata-ce:dev-b-6.3.x --no-update
+          docker compose exec -T php composer require oxid-esales/oxideshop-demodata-ce:dev-b-6.0.x --no-update
           docker compose exec -T php composer update --no-interaction
 
       - name: Copy config file
@@ -132,10 +131,6 @@ jobs:
             --shop-url http://localhost.local \
             --shop-directory /var/www/source \
             --compile-directory /var/www/source/tmp
-
-      - name: Install Apex Theme
-        run: |
-          docker compose exec -T php bin/oe-console oe:theme:activate apex
 
       - name: Activate Amazon Pay Module
         run: |
