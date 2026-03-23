@@ -156,13 +156,13 @@ class OrderController extends OrderController_parent
             $exclude
         ) {
             $amazonConfig = oxNew(Config::class);
-            if ($amazonConfig->getAmazonPayLogging())
+            if ($amazonConfig->getAmazonPayLogging()) 
             {
                 $logger->log(
                     LogLevel::DEBUG,
                     Registry::getLang()->translateString(
                         'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT',
-                    1
+                        1
                     )
                     . PHP_EOL .
                     'isAmazonpayment: ' . $isAmazonPayment . PHP_EOL .
@@ -372,7 +372,7 @@ class OrderController extends OrderController_parent
             return;
         }
 
-        if ($amazonConfig->getAmazonPayLogging())
+        if ($amazonConfig->getAmazonPayLogging()) 
         {
             $logger = new Logger();
             $logger->log(
@@ -461,7 +461,7 @@ class OrderController extends OrderController_parent
             if (!$actShipSet) {
                 if ($lastShipSet) {
                     $amazonConfig = oxNew(Config::class);
-                    if ($amazonConfig->getAmazonPayLogging())
+                    if ($amazonConfig->getAmazonPayLogging()) 
                     {
                         $logger = new Logger();
                         $logger->log(
