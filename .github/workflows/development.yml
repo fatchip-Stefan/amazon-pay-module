@@ -101,6 +101,8 @@ jobs:
       - name: Install module
         run: |
           docker compose exec -T \
+            php composer self-update --2.2
+          docker compose exec -T \
             php composer config repositories.${{ env.PACKAGE_NAME }} \
             --json '{"type":"path", "url":"./test-module", "options": {"symlink": true}}'
           docker compose exec -T \
