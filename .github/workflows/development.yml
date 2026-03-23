@@ -122,6 +122,16 @@ jobs:
             php composer config audit.block-insecure false
           docker compose exec -T php php vendor/bin/reset-shop
 
+      - name: Copy config file
+        run: |
+          cp source/vendor/oxid-esales/testing-library/test_config.yml.dist source/test_config.yml
+          perl -pi\
+            -e 's#partial_module_paths: null#partial_module_paths: {{ $env.MODULE_PATH }}#g;' \
+            -e 's#activate_all_modules: false#activate_all_modules: true#g;' \
+            -e 's#run_tests_for_shop: true#run_tests_for_shop: false#g;' \
+           -e 's#additional_test_paths: '\''vendor/oxid-esales/oxideshop-ee/Tests,vendor/oxid-esales/oxideshop-pe/Tests'\''#additional_test_paths: /var/www/vendor/oxid-solution-catalysts/amazon-pay-module/tests#g;'\
+            source/test_config.yml
+
       - name: Show docker log
         if: always()
         run: |
