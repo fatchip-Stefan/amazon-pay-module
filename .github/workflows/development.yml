@@ -79,7 +79,7 @@ jobs:
             -e "s#PHP_VERSION=.*#PHP_VERSION=${{ inputs.php }}#g;"\
             .env
           perl -pi\
-            -e "s#MYSQL_VERSON=.*#'MYSQL_VERSION='5.7'#g;"\
+            -e "s#MYSQL_VERSION=.*#'MYSQL_VERSION='5.7'#g;"\
             .env
           perl -pi\
             -e 's#display_errors =.*#display_errors = false#g;'\
