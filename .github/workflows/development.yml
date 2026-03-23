@@ -122,15 +122,12 @@ jobs:
             php composer config audit.block-insecure false
           docker compose exec -T php php vendor/bin/reset-shop
 
-      - name: Copy config file
+      - name: Put module settings
+        continue-on-error: true
         run: |
-          cp source/vendor/oxid-esales/testing-library/test_config.yml.dist source/test_config.yml
-          perl -pi\
-            -e 's#partial_module_paths: null#partial_module_paths: {{ $env.MODULE_PATH }}#g;' \
-            -e 's#activate_all_modules: false#activate_all_modules: true#g;' \
-            -e 's#run_tests_for_shop: true#run_tests_for_shop: false#g;' \
-           -e 's#additional_test_paths: '\''vendor/oxid-esales/oxideshop-ee/Tests,vendor/oxid-esales/oxideshop-pe/Tests'\''#additional_test_paths: /var/www/vendor/oxid-solution-catalysts/amazon-pay-module/tests#g;'\
-            source/test_config.yml
+          mkdir -p source/var/configuration/environment/
+          echo "${{ secrets.MODULE_SETTINGS }}" > source/var/configuration/environment/1.yaml
+          docker-compose exec -T php php bin/oe-console oe:module:apply-configuration
 
       - name: Show docker log
         if: always()
@@ -237,16 +234,18 @@ jobs:
 
       - name: Run tests
         run: |
-          docker compose exec -T \
-           -e XDEBUG_MODE=coverage \
-           php vendor/bin/phpunit \
-             -c /var/www/vendor/oxid-esales/amazon-pay-module/tests/phpunit.xml \
-             --testsuite=Integration \
-             --bootstrap=/var/www/source/bootstrap.php \
-             /var/www/vendor/oxid-esales/amazon-pay-module/tests | tee integration_PHP74_MYSQL56_phpunit_log.txt 2>&1 || true
-          if grep -q -Ei 'fail|\\.\\=\\=|Warning|Notice|Deprecated|Fatal|Error' integration_PHP74_MYSQL56_phpunit_log.txt; then 
-            exit 1; 
-          fi
+          docker-compose exec -T \
+            -e PARTIAL_MODULE_PATHS=${{ env.MODULE_PATH }} \
+            -e ACTIVATE_ALL_MODULES=1 \
+            -e RUN_TESTS_FOR_SHOP=0 \
+            -e RUN_TESTS_FOR_MODULES=0 \
+            -e XDEBUG_MODE=coverage \
+            -e ADDITIONAL_TEST_PATHS='/var/www/vendor/${{ env.PACKAGE_NAME }}/tests' \
+            php php vendor/bin/runtests \
+              --coverage-clover=/var/www/coverage.xml \
+              --coverage-text \
+              --log-junit=/var/www/phpunit.xml \
+              AllTestsUnit
 
       - name: Stop containers
         if: always()
