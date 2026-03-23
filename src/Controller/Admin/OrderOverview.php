@@ -127,7 +127,6 @@ class OrderOverview extends OrderOverview_parent
         $this->addTplParam('isCaptured', $isCaptured);
         $this->addTplParam('withLiveStatus', false);
 
-
         return parent::render();
     }
 

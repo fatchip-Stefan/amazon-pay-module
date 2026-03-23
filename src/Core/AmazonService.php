@@ -460,11 +460,13 @@ class AmazonService
             $refundAmount < 0 ||
             round($refundAmount, 2) > round($this->getMaximalRefundAmount($orderId), 2)
         ) {
-            if ($amazonConfig->getAmazonPayLogging()) {
+            if ($amazonConfig->getAmazonPayLogging())
+            {
                 $logger = new Logger();
                 $logger->log(LogLevel::DEBUG,
-                    \OxidEsales\Eshop\Core\Registry::getLang()->translateString('OSC_AMAZONPAY_REFUND_ANNOTATION', 1) . PHP_EOL .
-                    'refundAmount: ' . $refundAmount . PHP_EOL
+                    Registry::getLang()->translateString(
+                        'OSC_AMAZONPAY_REFUND_ANNOTATION', 1) . PHP_EOL .
+                        'refundAmount: ' . $refundAmount . PHP_EOL
                 );
             }
             Registry::getUtilsView()->addErrorToDisplay(
@@ -851,9 +853,11 @@ class AmazonService
 
         $exception = oxNew(InputException::class, $response['message']);
         $amazonConfig = oxNew(Config::class);
-        if ($amazonConfig->getAmazonPayLogging()) {
+        if ($amazonConfig->getAmazonPayLogging())
+        {
             $logger->log(LogLevel::INFO,
-                \OxidEsales\Eshop\Core\Registry::getLang()->translateString('AMAZON_PAY_COMPLETECHECKOUTSESSION_ERROR_MESSAGE', 1) . PHP_EOL .
+                Registry::getLang()->translateString(
+                    'AMAZON_PAY_COMPLETECHECKOUTSESSION_ERROR_MESSAGE', 1) . PHP_EOL .
                 'reasonCode: ' . $response['reasonCode'] . PHP_EOL .
                 'Result: ' . var_dump($result) . PHP_EOL
             );
