@@ -122,13 +122,6 @@ jobs:
             php composer config audit.block-insecure false
           docker compose exec -T php php vendor/bin/reset-shop
 
-      - name: Put module settings
-        continue-on-error: true
-        run: |
-          # mkdir -p source/var/configuration/environment/
-          # echo "${{ secrets.MODULE_SETTINGS }}" > source/var/configuration/environment/1.yaml
-          # docker compose exec -T php php bin/oe-console oe:module:apply-configuration
-
       - name: Show docker log
         if: always()
         run: |
