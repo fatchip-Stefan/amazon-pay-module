@@ -103,7 +103,7 @@ jobs:
           docker compose exec -T \
             php composer config repositories.${{ env.PACKAGE_NAME }} \
             --json '{"type":"path", "url":"./test-module", "options": {"symlink": true}}'
-         docker compose exec -T \
+          docker compose exec -T \
             php composer config audit.block-insecure false
           docker compose exec -T \
             php composer require ${{ env.PACKAGE_NAME }}:* --no-interaction --no-update
