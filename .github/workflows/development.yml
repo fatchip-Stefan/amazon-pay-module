@@ -126,7 +126,6 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p source/var/configuration/environment/
-          echo "${{ secrets.MODULE_SETTINGS }}" > source/var/configuration/environment/1.yaml
           docker compose exec -T php php bin/oe-console oe:module:apply-configuration
 
       - name: Show docker log
