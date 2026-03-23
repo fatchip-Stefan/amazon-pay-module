@@ -323,7 +323,8 @@ class Order extends Order_parent
             if ($amazonConfig->getAmazonPayLogging())
             {
                 $logger = new Logger();
-                $logger->log(LogLevel::ERROR,
+                $logger->log(
+                    LogLevel::ERROR,
                     Registry::getLang()->translateString(
                         'OSC_AMAZONPAY_DELETE_ERROR',
                         1

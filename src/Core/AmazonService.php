@@ -913,8 +913,10 @@ class AmazonService
         if (!empty($response['reasonCode']))
         {
             $amazonConfig = oxNew(Config::class);
-            if ($amazonConfig->getAmazonPayLogging()) {
-                $logger->log(LogLevel::INFO,
+            if ($amazonConfig->getAmazonPayLogging())
+            {
+                $logger->log(
+                    LogLevel::INFO,
                     'Capture Error:' . $response['message'] . PHP_EOL .
                     'chargeId: ' . $chargeId . PHP_EOL
                 );

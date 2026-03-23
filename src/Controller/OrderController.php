@@ -158,9 +158,10 @@ class OrderController extends OrderController_parent
             $amazonConfig = oxNew(Config::class);
             if ($amazonConfig->getAmazonPayLogging())
             {
-                $logger->log(LogLevel::DEBUG,
+                $logger->log(
+                    LogLevel::DEBUG,
                     Registry::getLang()->translateString(
-                    'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT',
+                        'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT',
                     1
                     )
                     . PHP_EOL .
@@ -374,7 +375,8 @@ class OrderController extends OrderController_parent
         if ($amazonConfig->getAmazonPayLogging())
         {
             $logger = new Logger();
-            $logger->log(LogLevel::ERROR,
+            $logger->log(
+                LogLevel::ERROR,
                 Registry::getLang()->translateString(
                     'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT',
                     1
@@ -462,7 +464,8 @@ class OrderController extends OrderController_parent
                     if ($amazonConfig->getAmazonPayLogging())
                     {
                         $logger = new Logger();
-                        $logger->log(LogLevel::DEBUG,
+                        $logger->log(
+                            LogLevel::DEBUG,
                             Registry::getLang()->translateString(
                                 'AMAZON_PAY_LASTSHIPSETNOTVALID',
                                 1
