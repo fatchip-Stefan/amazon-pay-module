@@ -138,6 +138,13 @@ jobs:
         continue-on-error: true
         working-directory: source/test-module/tests
         run: |
+          cp source/vendor/oxid-esales/testing-library/test_config.yml.dist source/test_config.yml
+          perl -pi\
+          -e 's#partial_module_paths: null#partial_module_paths: {{ $env.MODULE_PATH }}#g;' \
+          -e 's#activate_all_modules: false#activate_all_modules: true#g;' \
+          -e 's#run_tests_for_shop: true#run_tests_for_shop: false#g;' \
+          -e 's#additional_test_paths: '\''vendor/oxid-esales/oxideshop-ee/Tests,vendor/oxid-esales/oxideshop-pe/Tests'\''#additional_test_paths: /var/www/vendor/oxid-solution-catalysts/amazon-pay-module/tests#g;'\
+          source/test_config.yml
           echo "AMAZONPAY_CLIENT_USERNAME='${{ secrets.AMAZONPAY_CLIENT_USERNAME }}'" >> .env
           echo "AMAZONPAY_CLIENT_PASSWORD='${{ secrets.AMAZONPAY_CLIENT_PASSWORD }}'" >> .env
           echo "OXID_ADMIN_USERNAME='${{ secrets.OXID_ADMIN_USERNAME }}'" >> .env
