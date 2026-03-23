@@ -77,10 +77,9 @@ jobs:
           make file=services/selenium-chrome.yml addservice
           perl -pi\
             -e "s#PHP_VERSION=.*#PHP_VERSION=${{ inputs.php }}#g;"\
-          perl -pi\
-            -e "s#PHP_VERSION=.*#'MYSQL_VERSION='5.7'#g;"\
             .env
-          
+          perl -pi\
+            -e "s#MYSQL_VERSON=.*#'MYSQL_VERSION='5.7'#g;"\
             .env
           perl -pi\
             -e 's#display_errors =.*#display_errors = false#g;'\
