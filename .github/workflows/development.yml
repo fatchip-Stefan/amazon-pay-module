@@ -287,7 +287,7 @@ jobs:
             source/phpunit.xml
 
   codeception_tests:
-    if: false
+    if: always()
     needs: [ install_shop_with_module ]
     runs-on: ubuntu-latest
     steps:
