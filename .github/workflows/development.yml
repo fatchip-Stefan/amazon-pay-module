@@ -15,10 +15,10 @@ on:
       php:
         description: 'PHP version'
         required: true
-        default: '7.4'
+        default: '8.1'
         type: choice
         options:
-          - '7.4'
+          - '8.1'
       oxid:
         description: 'OXID eShop version'
         required: true
