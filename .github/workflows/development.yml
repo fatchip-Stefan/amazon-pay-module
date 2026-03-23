@@ -127,7 +127,7 @@ jobs:
         run: |
           mkdir -p source/var/configuration/environment/
           echo "${{ secrets.MODULE_SETTINGS }}" > source/var/configuration/environment/1.yaml
-          docker-compose exec -T php php bin/oe-console oe:module:apply-configuration
+          docker compose exec -T php php bin/oe-console oe:module:apply-configuration
 
       - name: Show docker log
         if: always()
@@ -234,7 +234,7 @@ jobs:
 
       - name: Run tests
         run: |
-          docker-compose exec -T \
+          docker compose exec -T \
             -e PARTIAL_MODULE_PATHS=${{ env.MODULE_PATH }} \
             -e ACTIVATE_ALL_MODULES=1 \
             -e RUN_TESTS_FOR_SHOP=0 \
