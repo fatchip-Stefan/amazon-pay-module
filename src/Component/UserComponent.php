@@ -56,9 +56,12 @@ class UserComponent extends UserComponent_parent
             !array_key_exists($amazonBillingAddress['countryCode'], $config->getPossibleAddresses()) &&
             $amazonShippingAddress
         ) {
-            if ($config->getAmazonPayLogging()) 
-            {
-                $message = Registry::getLang()->translateString('AMAZON_PAY_BILLINGCOUNTRY_MISMATCH', 1) . PHP_EOL .
+            if ($config->getAmazonPayLogging()) {
+                $message = Registry::getLang()->translateString(
+                    'AMAZON_PAY_BILLINGCOUNTRY_MISMATCH',
+                    1
+                    )
+                    . PHP_EOL .
                     'Billing address countryCode was: ' . $amazonBillingAddress['countryCode'] . PHP_EOL .
                     'Shipping address countryCode was: ' . $amazonShippingAddress['countryCode'] . PHP_EOL .
                     'Allowed countries: ' . implode(', ', $config->getCountryList()) . PHP_EOL;
