@@ -126,6 +126,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p source/var/configuration/environment/
+          docker compose exec -T php php bin/oe-console oe:module:reset-configurations
           docker compose exec -T php php bin/oe-console oe:module:apply-configuration
 
       - name: Show docker log
