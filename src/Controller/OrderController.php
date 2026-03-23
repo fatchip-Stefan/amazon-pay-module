@@ -160,7 +160,7 @@ class OrderController extends OrderController_parent
             {
                 $logger->log(LogLevel::DEBUG,
                     Registry::getLang()->translateString(
-                        'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT', 1) . PHP_EOL .
+                    'MESSAGE_PAYMENT_UNAVAILABLE_PAYMENT', 1) . PHP_EOL .
                     'isAmazonpayment: ' . $isAmazonPayment . PHP_EOL .
                     'isAmazonSessionActive: ' . $isAmazonSessionActive . PHP_EOL .
                     'exclude: ' . $exclude . PHP_EOL

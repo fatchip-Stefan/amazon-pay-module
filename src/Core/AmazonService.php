@@ -465,8 +465,10 @@ class AmazonService
                 $logger = new Logger();
                 $logger->log(LogLevel::DEBUG,
                     Registry::getLang()->translateString(
-                        'OSC_AMAZONPAY_REFUND_ANNOTATION', 1) . PHP_EOL .
-                        'refundAmount: ' . $refundAmount . PHP_EOL
+                        'OSC_AMAZONPAY_REFUND_ANNOTATION',
+                        1) .
+                    PHP_EOL .
+                    'refundAmount: ' . $refundAmount . PHP_EOL
                 );
             }
             Registry::getUtilsView()->addErrorToDisplay(

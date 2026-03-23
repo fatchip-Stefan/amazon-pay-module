@@ -58,7 +58,7 @@ class UserComponent extends UserComponent_parent
         ) {
             if ($config->getAmazonPayLogging())
             {
-                $message = \OxidEsales\Eshop\Core\Registry::getLang()->translateString('AMAZON_PAY_BILLINGCOUNTRY_MISMATCH', 1) . PHP_EOL .
+                $message = Registry::getLang()->translateString('AMAZON_PAY_BILLINGCOUNTRY_MISMATCH', 1) . PHP_EOL .
                     'Billing address countryCode was: ' . $amazonBillingAddress['countryCode'] . PHP_EOL .
                     'Shipping address countryCode was: ' . $amazonShippingAddress['countryCode'] . PHP_EOL .
                     'Allowed countries: ' . implode(', ', $config->getCountryList()) . PHP_EOL;
