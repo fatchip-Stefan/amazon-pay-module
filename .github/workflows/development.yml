@@ -307,9 +307,8 @@ jobs:
 
       - name: Install codeception dependencies
         run: |
-          docker compose exec -T php composer require codeception/module-rest --dev --no-update --with-all-dependencies
-          docker compose exec -T php composer require codeception/module-phpbrowser --dev --no-update --with-all-dependencies
-          docker compose exec -T php composer require /module-phpbrowser --dev --no-update --with-all-dependencies
+          docker compose exec -T php composer require codeception/module-rest:2.* --dev --no-update --with-all-dependencies
+          docker compose exec -T php composer require codeception/module-phpbrowser:2.* --dev --no-update --with-all-dependencies
           docker compose exec -T php composer update
 
       - name: Run tests
