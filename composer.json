@@ -25,7 +25,8 @@
         "codeception/module-rest": "1.4.2",
         "codeception/module-phpbrowser": "^1.0.2",
         "oxid-esales/oxideshop-ce": "^6.3",
-        "oxid-esales/testing-library": "dev-b-6.3.x"
+        "oxid-esales/testing-library": "dev-b-6.3.x",
+        "behat/behat": "~3.0"
     },
     "conflicts": {
         "oxid-esales/oxideshop-ce": "<6.3 | ^7.0"
