@@ -118,6 +118,8 @@ jobs:
           docker compose exec -T \
             php composer config audit.block-insecure false
           docker compose exec -T php composer update --no-interaction
+          docker compose exec -T \
+            php composer config audit.block-insecure false
           docker compose exec -T php php vendor/bin/reset-shop
 
       - name: Put module settings
