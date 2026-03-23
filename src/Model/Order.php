@@ -320,8 +320,7 @@ class Order extends Order_parent
             $deleteError = Registry::getLang()->translateString('OSC_AMAZONPAY_DELETE_ERROR');
             Registry::getUtilsView()->addErrorToDisplay($deleteError);
             $amazonConfig = oxNew(Config::class);
-            if ($amazonConfig->getAmazonPayLogging())
-            {
+            if ($amazonConfig->getAmazonPayLogging()) {
                 $logger = new Logger();
                 $logger->log(
                     LogLevel::ERROR,
