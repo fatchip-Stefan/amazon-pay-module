@@ -460,10 +460,10 @@ class AmazonService
             $refundAmount < 0 ||
             round($refundAmount, 2) > round($this->getMaximalRefundAmount($orderId), 2)
         ) {
-            if ($amazonConfig->getAmazonPayLogging())
-            {
+            if ($amazonConfig->getAmazonPayLogging()) {
                 $logger = new Logger();
-                $logger->log(LogLevel::DEBUG,
+                $logger->log(
+                    LogLevel::DEBUG,
                     Registry::getLang()->translateString(
                         'OSC_AMAZONPAY_REFUND_ANNOTATION',
                         1
@@ -856,9 +856,9 @@ class AmazonService
 
         $exception = oxNew(InputException::class, $response['message']);
         $amazonConfig = oxNew(Config::class);
-        if ($amazonConfig->getAmazonPayLogging())
-        {
-            $logger->log(LogLevel::INFO,
+        if ($amazonConfig->getAmazonPayLogging()) {
+            $logger->log(
+                LogLevel::INFO,
                 Registry::getLang()->translateString(
                     'AMAZON_PAY_COMPLETECHECKOUTSESSION_ERROR_MESSAGE',
                     1
@@ -910,11 +910,9 @@ class AmazonService
 
         $response = PhpHelper::jsonToArray($result['response']);
 
-        if (!empty($response['reasonCode']))
-        {
+        if (!empty($response['reasonCode'])) {
             $amazonConfig = oxNew(Config::class);
-            if ($amazonConfig->getAmazonPayLogging())
-            {
+            if ($amazonConfig->getAmazonPayLogging()) {
                 $logger->log(
                     LogLevel::INFO,
                     'Capture Error:' . $response['message'] . PHP_EOL .

@@ -60,11 +60,11 @@ class UserComponent extends UserComponent_parent
                 $message = Registry::getLang()->translateString(
                     'AMAZON_PAY_BILLINGCOUNTRY_MISMATCH',
                     1
-                    )
-                    . PHP_EOL .
-                    'Billing address countryCode was: ' . $amazonBillingAddress['countryCode'] . PHP_EOL .
-                    'Shipping address countryCode was: ' . $amazonShippingAddress['countryCode'] . PHP_EOL .
-                    'Allowed countries: ' . implode(', ', $config->getCountryList()) . PHP_EOL;
+                    ) 
+                . PHP_EOL .
+                'Billing address countryCode was: ' . $amazonBillingAddress['countryCode'] . PHP_EOL .
+                'Shipping address countryCode was: ' . $amazonShippingAddress['countryCode'] . PHP_EOL .
+                'Allowed countries: ' . implode(', ', $config->getCountryList()) . PHP_EOL;
                 $logger->log(LogLevel::DEBUG, $message);
             }
             $amazonBillingAddress = $amazonShippingAddress;
