@@ -52,8 +52,10 @@
         "phpcbf": "phpcbf --standard=tests/phpcs.xml",
 
         "phpmd": "phpmd src ansi tests/PhpMd/exclude-static-access-rule.xml",
+        "phpmd-generate-baseline": "phpmd src ansi tests/PhpMd/standard.xml --generate-baseline",
         "phpmd-report": "phpmd src json tests/PhpMd/exclude-static-access-rule.xml --reportfile tests/reports/phpmd.report.json",
-        "phpstan-report": "phpstan -ctests/PhpStan/phpstan.neon analyse -l 8 src/ > phpstan.report.json",
+        "phpstan": "phpstan -ctests/PhpStan/phpstan.neon analyse -l 8 src/",
+        "phpstan-report": "phpstan -ctests/PhpStan/phpstan.neon analyse -l 8 src/ --error-format=json > phpstan.report.json",
 
         "static": [
             "@phpcs",
