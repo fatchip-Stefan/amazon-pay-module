@@ -151,6 +151,11 @@ jobs:
           make up
           sleep 2
 
+      - name: Downgrade composer to Version 2.2
+        run: |
+          docker compose exec -T \
+          php composer 2.2
+
       - name: Checkout current module
         uses: actions/checkout@v3
         with:
