@@ -22,8 +22,8 @@
         "phpstan/phpstan": "0.9.*",
         "phpmd/phpmd": "*",
         "vlucas/phpdotenv": "*",
-        "codeception/module-rest": "^1",
-        "codeception/module-phpbrowser": "^1",
+        "codeception/module-rest": "1.4.2",
+        "codeception/module-phpbrowser": "1.0.2",
         "oxid-esales/oxideshop-ce": "6.0"
     },
     "conflicts": {
