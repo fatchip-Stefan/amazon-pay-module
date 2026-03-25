@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
-        "phpstan/phpstan": "^1",
+        "phpstan/phpstan": "*",
         "phpmd/phpmd": "*",
         "vlucas/phpdotenv": "*",
         "codeception/module-rest": "^1",
@@ -54,7 +54,7 @@
         "phpmd": "phpmd src ansi tests/PhpMd/standard.xml --baseline-file tests/PhpMd/phpmd.baseline.xml",
         "phpmd-generate-baseline": "phpmd src ansi tests/PhpMd/standard.xml --generate-baseline",
         "phpmd-report": "phpmd src json tests/PhpMd/standard.xml --reportfile tests/reports/phpmd.report.json --baseline tests/PhpMd/phpmd.baseline.xml",
-        "phpstan-report": "phpstan -ctests/PhpStan/phpstan.neon analyse -l 8 src/ --error-format=json > phpstan.report.json",
+        "phpstan-report": "phpstan -ctests/PhpStan/phpstan.neon analyse -l 8 src/ > phpstan.report.json",
 
         "static": [
             "@phpcs",
