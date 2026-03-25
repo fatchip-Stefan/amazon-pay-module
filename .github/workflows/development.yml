@@ -231,7 +231,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '7.0' ]
+        php: [ '7.4' ]
     steps:
       - name: Checkout current module
         uses: actions/checkout@v5
