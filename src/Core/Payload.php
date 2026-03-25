@@ -515,7 +515,8 @@ class Payload
                 $oxstreet,
                 $oxstreetnr
             );
-        } else {
+        }
+        if (empty($oxcompany)) {
             $addressLine1 = sprintf(
                 '%s %s',
                 $oxstreet,

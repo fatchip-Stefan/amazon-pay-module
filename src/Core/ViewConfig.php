@@ -231,7 +231,8 @@ class ViewConfig extends ViewConfig_parent
         $address = $delAddress->getTempDeliveryAddressAddress();
         if ($address->getId()) {
             $payload->setAddressDetailsFromDeliveryAddress($address);
-        } else {
+        }
+        if (! $address->getId()) {
             $payload->setAddressDetails($user);
         }
 
