@@ -70,7 +70,7 @@ jobs:
       - name: Overwrite composer.json for composer2 compatibility
         shell: bash
         run: |
-          cat <<EOT > source/composer.json
+          cat <<'EOT' > source/composer.json
           {
             "name": "oxid-esales/oxideshop-metapackage-ce",
             "description": "This is OXID eShop compilation metapackage.",
@@ -145,7 +145,7 @@ jobs:
             "require-dev": {
               "oxid-esales/testing-library": "*"
             }
-          }
+          }\r\n
           EOT    
 
       - name: Start containers
