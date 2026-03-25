@@ -426,7 +426,7 @@ class Payload
         if (!empty($oxcompany)) {
             $addressLine1 = sprintf(
                 '%s',
-                $oxcompany,
+                $oxcompany
             );
             $addressLine2 = sprintf(
                 '%s %s',
@@ -507,7 +507,7 @@ class Payload
         if (!empty($oxcompany)) {
             $addressLine1 = sprintf(
                 '%s',
-                $oxcompany,
+                $oxcompany
             );
             $addressLine2 = sprintf(
                 '%s %s',
