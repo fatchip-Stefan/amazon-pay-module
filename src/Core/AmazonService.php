@@ -994,6 +994,7 @@ class AmazonService
             return [];
         }
 
+        $amazonObjIds = [];
         foreach ($logMessages as $logMessage) {
             $logsWithChargePermission =
                 $repository->findLogMessageForOrderId($logMessage['OSC_AMAZON_OXORDERID']);

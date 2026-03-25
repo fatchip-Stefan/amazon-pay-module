@@ -23,6 +23,7 @@ use stdClass;
 
 /**
  * Class Config
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Config
 {

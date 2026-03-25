@@ -541,9 +541,4 @@ class Events
 
         DatabaseProvider::getDb()->execute($sql);
     }
-
-    private static function cleanCache()
-    {
-        Registry::getUtils()->oxResetFileCache();
-    }
 }
