@@ -144,7 +144,7 @@ jobs:
                 }
               },
               "require-dev": {
-                "oxid-esales/testing-library": "^3"
+                "oxid-esales/testing-library": "^1"
               }
             }
 
