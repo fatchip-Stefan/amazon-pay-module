@@ -167,8 +167,6 @@ jobs:
             php composer config repositories.${{ env.PACKAGE_NAME }} \
             --json '{"type":"path", "url":"./test-module", "options": {"symlink": true}}'
           docker compose exec -T \
-            php composer config audit.block-insecure false
-          docker compose exec -T \
             php composer require ${{ env.PACKAGE_NAME }}:* --no-interaction --no-update
 
       - name: Install additional modules
@@ -178,11 +176,7 @@ jobs:
 
       - name: Install dependencies and reset shop
         run: |
-          docker compose exec -T \
-            php composer config audit.block-insecure false
           docker compose exec -T php composer update --no-interaction --no-scripts
-          docker compose exec -T \
-            php composer config audit.block-insecure false
           docker compose exec -T php php vendor/bin/reset-shop
 
       - name: Put module settings
