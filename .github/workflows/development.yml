@@ -123,7 +123,6 @@ jobs:
                 "webmozart/path-util": "2.3.0",
                 "zendframework/zend-code": "2.6.3",
                 "zendframework/zend-eventmanager": "3.2.1",
-                "oxid-esales/amazon-pay-module": "^1.6.1",
                 "vlucas/phpdotenv": "*"
               },
               "repositories": {
