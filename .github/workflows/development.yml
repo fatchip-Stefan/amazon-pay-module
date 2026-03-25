@@ -70,7 +70,7 @@ jobs:
       - name: Overwrite composer.json for composer2 compatibility
         shell: bash
         run: |
-          cat <<'EOF' > source/composer.json
+          cat <<EOF > source/composer.json
           {
             "name": "oxid-esales/oxideshop-metapackage-ce",
             "description": "This is OXID eShop compilation metapackage.",
