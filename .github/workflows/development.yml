@@ -146,7 +146,7 @@ jobs:
               "oxid-esales/testing-library": "*"
             }
           }
-          EOF          
+          'EOF'     
 
       - name: Start containers
         run: |
