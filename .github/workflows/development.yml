@@ -154,7 +154,7 @@ jobs:
       - name: Downgrade composer to Version 2.2
         run: |
           docker compose exec -T \
-          php composer 2.2
+          php composer self-update 2.2
 
       - name: Checkout current module
         uses: actions/checkout@v3
