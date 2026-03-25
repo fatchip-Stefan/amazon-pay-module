@@ -16,7 +16,7 @@ jobs:
   install_shop_with_module:
     strategy:
       matrix:
-        php: [ '7.4' ]
+        php: [ '7.0' ]
     runs-on: ubuntu-latest
     steps:
       - name: Clone testing environment v4.0.0
@@ -276,7 +276,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ '7.4' ]
+        php: [ '7.0' ]
         mysql: [ '5.7' ]
     needs: [ install_shop_with_module ]
     runs-on: ubuntu-latest
@@ -390,7 +390,7 @@ jobs:
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: TestsLog-7.4
+          name: TestsLog-7.0
           path: ./tests/
 
       - name: Fix paths in unit logs
