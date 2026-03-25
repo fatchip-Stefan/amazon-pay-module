@@ -18,13 +18,12 @@
         "monolog/monolog": "^1.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
-        "phpmd/phpmd": "^2",
-        "phpstan/phpstan": "^1.10.",
-        "symfony/dotenv": "^5.4",
-        "codeception/module-rest": "2.*",
-        "codeception/module-phpbrowser": "^1.0.2",
-        "oxid-esales/oxideshop-ce": "^6.0",
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "*",
+        "phpstan/phpstan": "*",
+        "codeception/module-rest": "*",
+        "codeception/module-phpbrowser": "*",
+        "oxid-esales/oxideshop-ce": "^v6.1.0",
         "oxid-esales/testing-library": "dev-b-6.1.x"
     },
     "conflicts": {
