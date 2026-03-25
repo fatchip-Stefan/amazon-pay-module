@@ -362,6 +362,8 @@ jobs:
         run: |
           docker compose exec -T php sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
           docker compose exec -T php sudo php composer-setup.php --install-dir=/usr/bin --filename=composer 2.2
+          docker compose exec -T php composer require codeception/module-rest:1.4.2 --dev --no-update --with-all-dependencies
+          docker compose exec -T php composer require codeception/module-phpbrowser:2.* --dev --no-update --with-all-dependencies
           docker compose exec -T php composer update
 
       - name: Run tests
