@@ -153,8 +153,8 @@ jobs:
 
       - name: Downgrade composer to Version 2.2
         run: |
-          docker compose exec -T \
-          php composer self-update 2.2
+          docker compose exec -T php sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          docker compose exec -T php sudo php composer-setup.php --install-dir=/usr/bin --filename=composer 2.2
 
       - name: Checkout current module
         uses: actions/checkout@v3
