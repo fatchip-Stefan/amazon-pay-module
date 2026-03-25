@@ -144,7 +144,7 @@ jobs:
                 }
               },
               "require-dev": {
-                "oxid-esales/testing-library": "*"
+                "oxid-esales/testing-library": "b-6.1.x"
               }
             }
 
